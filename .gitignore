@@ -1,0 +1,6 @@
+/backup
+/.vscode
+/app/core/Config.php
+/app/_plugins
+/app/vendor
+/public/elfinder

@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'BPG Glaho Arial';
+    src: url('BPGGlahoArial.eot');
+    src: url('BPGGlahoArial.eot?#iefix') format('embedded-opentype'),
+        url('BPGGlahoArial.woff2') format('woff2'),
+        url('BPGGlahoArial.woff') format('woff'),
+        url('BPGGlahoArial.ttf') format('truetype'),
+        url('BPGGlahoArial.svg#BPGGlahoArial') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
