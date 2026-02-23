@@ -25,7 +25,7 @@ class realodProtect
 		);
 
 		if($call == "true"){
-			$_SESSION['protect_x'] = functions\string::random(6);
+			$_SESSION['protect_x'] = functions\strings::random(6);
 			$this->out = array(
 				"Error" => array(
 					"Code"=>0, 

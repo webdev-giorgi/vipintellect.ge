@@ -14,7 +14,7 @@ class loadStory
 		require_once 'app/functions/calendar.php'; 
 		require_once 'app/functions/strings.php'; 
 
-		$string = new functions\string();
+		$string = new functions\strings();
 
 		$this->out = array(
 			"Error" => array(

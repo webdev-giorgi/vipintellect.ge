@@ -5,9 +5,9 @@ class websiteNavigation
 
 	public function index(){
 		require_once 'app/core/Config.php';
-		require_once 'app/functions/string.php';
+		require_once 'app/functions/strings.php';
 		
-		$string = new functions\string();
+		$string = new functions\strings();
 		$nav = "";
 		if(count($this->navigation))
 		{

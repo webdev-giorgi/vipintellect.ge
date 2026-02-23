@@ -30,7 +30,7 @@ class recoverEmail
 			$args["sendTo"] = $email; 
 			$args["subject"] = "პაროლის აღდგენა";
 
-			$string = new functions\string();
+			$string = new functions\strings();
 			$password = $string::random(10);
 
 			$message = "<strong>პაროლის აღდგენა</strong>";
