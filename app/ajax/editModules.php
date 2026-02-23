@@ -14,7 +14,7 @@ class editModules
 		require_once 'app/core/Config.php';
 		require_once 'app/functions/makeForm.php';
 		require_once 'app/functions/request.php';
-		require_once 'app/functions/string.php';
+		require_once 'app/functions/strings.php';
 		$this->out = array(
 			"Error" => array(
 				"Code"=>1,
@@ -24,7 +24,7 @@ class editModules
 		);
 		$idx = functions\request::index("POST","idx");
 		$lang = functions\request::index("POST","lang");
-		$random = functions\string::random(25);
+		$random = functions\strings::random(25);
 		if($idx == "" || $lang=="")
 		{
 			$this->out = array(
