@@ -29,6 +29,7 @@ class editFormModules
 		$date = functions\request::index("POST","date");
 		$title = functions\request::index("POST","title");
 		$pageText = functions\request::index("POST","pageText");
+		$keywords = functions\request::index("POST","keywords");
 		$link = functions\request::index("POST","link");
 		$classname = functions\request::index("POST","classname");
 		$serialPhotos = unserialize(functions\request::index("POST","serialPhotos"));
@@ -52,6 +53,7 @@ class editFormModules
 					'date'=>$date, 
 					'title'=>$title, 
 					'pageText'=>$pageText, 
+					'keywords'=>$keywords, 
 					'link'=>$link, 
 					'classname'=>$classname, 
 					'serialPhotos'=>$serialPhotos, 

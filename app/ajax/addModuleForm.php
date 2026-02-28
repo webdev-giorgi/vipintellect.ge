@@ -28,7 +28,7 @@ class addModuleForm
 
 		$moduleSlug = functions\request::index("POST","moduleSlug");
 		$lang = functions\request::index("POST","lang");
-		$random = functions\string::random(25);
+		$random = functions\strings::random(25);
 
 		$Database = new Database("modules", array(
 			"method"=>"selectParentFieldsByType",
@@ -119,6 +119,19 @@ class addModuleForm
 				"value"=>"Hidden Field"
 			));
 		}
+
+		$form .= functions\makeForm::label(array(
+			"id"=>"keywordsLabel", 
+			"for"=>"keywords", 
+			"name"=>"ქივორდები",
+			"require"=>""
+		));
+		$form .= functions\makeForm::inputText(array(
+			"placeholder"=>"Vip Intellect, IT, Trainings...", 
+			"id"=>"keywords", 
+			"name"=>"keywords",
+			"value"=>"" 
+		));
 
 		/*
 		* Classname field

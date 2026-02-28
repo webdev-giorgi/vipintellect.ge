@@ -14,9 +14,11 @@ class _header
 		if(isset($getter['title'])){
 			$title = strip_tags($getter['title']);
 			$description = strip_tags($getter['description']);
+			$keywords = strip_tags($getter['keywords']);
 		}else if(isset($getter[0]['title'])){
 			$title = strip_tags($getter[0]['title']); 
 			$description = strip_tags($getter[0]['description']);
+			$keywords = strip_tags($getter[0]['keywords']);
 		}else{
 			$title = "";
 			$description = "";
@@ -25,6 +27,7 @@ class _header
 		if(isset($this->product)){
 			$title = strip_tags($this->product['title']);
 			$description = strip_tags($this->product['short_description']);
+			$keywords = strip_tags($this->product['keywords']);
 		}
 
 		$out = "<!DOCTYPE html>\n";
@@ -64,7 +67,7 @@ class _header
 		$out .= "<meta property=\"og:title\" content=\"".strip_tags($title)."\" />\n";
 		$out .= "<meta property=\"og:type\" content=\"website\" />\n";
 		$out .= "<meta property=\"og:url\" content=\"".$actual_link."\"/>\n";
-		$keywords = str_replace(" ", ",", strip_tags($description));
+		$keywords = strip_tags($keywords);
 		$out .= sprintf(
 			"<meta name=\"keywords\" content=\"%s\" />\n", 
 			htmlentities($keywords)
@@ -129,7 +132,7 @@ class _header
 		);
 		
 		$out .= sprintf(
-			"<link href=\"%scss/web/style3.css\" rel=\"stylesheet\" />\n", 
+			"<link href=\"%scss/web/style3.css\" as=\"style\" rel=\"preload\" onload=\"this.onload=null;this.rel='stylesheet'\" />\n", 
 			$this->public
 		);
 
@@ -143,7 +146,13 @@ class _header
 
 		// fb plugin (should be in body, not head)
 		$out .= "</head>\n";
-		$out .= "<body class=\"page-homepage-carousel\">\n";
+		
+		if($getter['idx']==1){
+			$out .= "<body class=\"page-homepage-carousel\">\n";
+		}else{
+			$out .= "<body class=\"page-sub-page\">\n";
+		}
+		
 		// $out .= "<div id=\"fb-root\"></div>\n";
 		// $out .= "<script>(function(d, s, id) {
 		// var js, fjs = d.getElementsByTagName(s)[0];

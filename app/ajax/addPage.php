@@ -38,7 +38,9 @@ class addPage
 		$attachModule = functions\request::index("POST","attachModule");
 		$redirect = functions\request::index("POST","redirect");
 		$pageDescription = functions\request::index("POST","pageDescription");
+		$pageDescription = functions\request::index("POST","pageDescription");
 		$pageText = functions\request::index("POST","pageText");
+		$keywords = functions\request::index("POST","keywords");
 		$serialPhotos = unserialize(functions\request::index("POST","serialPhotos"));
 		$serialFiles = unserialize(functions\request::index("POST","serialFiles"));
 
@@ -74,6 +76,7 @@ class addPage
 					'redirect'=>$redirect, 
 					'pageDescription'=>$pageDescription, 
 					'pageText'=>$pageText, 
+					'keywords'=>$keywords, 
 					'serialPhotos'=>$serialPhotos, 
 					'serialFiles'=>$serialFiles 
 			));

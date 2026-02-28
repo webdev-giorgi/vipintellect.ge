@@ -4,8 +4,11 @@ require_once("app/functions/strings.php");
 require_once("app/functions/strip_output.php"); 
 require_once("app/functions/trainings.php"); 
 require_once("app/functions/getWebpUrl.php"); 
-
 $getWebpUrl = new functions\getWebpUrl(); 
+
+require_once("app/functions/webp.php"); 
+$webp = new functions\webp(); 
+
 $l = new functions\l(); 
 $string = new functions\strings(); 
 $trainings = new functions\trainings(); 
@@ -156,38 +159,12 @@ echo $data['headertop'];
               </div><!-- /.col-md-4 -->
               <div class="col-md-4 col-sm-12">
                   <section id="about">
-                  <div id="fb-container"></div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const container = document.getElementById("fb-container");
-
-  const observer = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting) {
-      loadFacebook();
-      observer.disconnect();
-    }
-  });
-
-  observer.observe(container);
-
-  function loadFacebook() {
-    const script = document.createElement("script");
-    script.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0";
-    script.async = true;
-    script.defer = true;
-    document.body.appendChild(script);
-
-    container.innerHTML = `
-      <div class="fb-page"
-        data-href="https://www.facebook.com/vipintellectgroup"
-        data-tabs="timeline"
-        data-width="340"
-        data-height="400">
-      </div>`;
-  }
-});
-</script>
+                    <header>
+                        <h2 class="ninoMtavruli"><?=@strip_tags($data['aboutText']['title'])?></h2>
+                    </header>
+                    <p><?=@strip_tags($data['aboutText']['description'])?></p>
+                    <a href="https://www.facebook.com/vipintellectgroup" target="_blank" class="read-more glakho" style="font-size: 12px;"><?=$l->translate("gamogvyevifb")?></a>
+                    <div class="clear"></div>
                   </section><!-- /.about -->
               </div><!-- /.col-md-4 -->
           </div><!-- /.row -->
@@ -258,8 +235,8 @@ document.addEventListener("DOMContentLoaded", function() {
                                     strip_output::index($pic[0]['path'])
                                   );
 
-                                //   $image = $getWebpUrl->index($imageUrl, array(200, 140));
-                                  $image = $imageUrl;
+                                  $image = $webp->index($imageUrl);
+                                //   $image = $imageUrl;
                                 }else{
                                   $image = "/public/filemanager/noimage.png";
                                 }

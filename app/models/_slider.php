@@ -6,8 +6,13 @@ class _slider
 	public function index()
 	{
 		require_once("app/functions/strip_output.php"); 
+		
+		require_once("app/functions/webp.php"); 
+		$webp = new functions\webp(); 
+
 		require_once("app/functions/getWebpUrl.php"); 
 		$getWebpUrl = new functions\getWebpUrl(); 
+		
 
 		$out = array();
 		$out["list"] = "";
@@ -32,7 +37,8 @@ class _slider
 					$image = "/public/filemanager/noimage.png";
 				}	
 
-				$imageUrl = $getWebpUrl->index(Config::WEBSITE_ . $image, array(555, 320));
+				// $imageUrl = $getWebpUrl->index(Config::WEBSITE_ . $image, array(555, 320));
+				$imageUrl = $webp->index(Config::WEBSITE_ . $image, 3);
 
 				// $out["list"] .= $imageUrl."zzz";
 				

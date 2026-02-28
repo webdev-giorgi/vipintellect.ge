@@ -136,6 +136,20 @@ class editModules
 					"value"=>"Hidden Field"
 				));
 			}
+
+
+			$form .= functions\makeForm::label(array(
+				"id"=>"keywordsLabel", 
+				"for"=>"keywords", 
+				"name"=>"ქივორდები",
+				"require"=>""
+			));
+			$form .= functions\makeForm::inputText(array(
+				"placeholder"=>"Vip Intellect, IT, Trainings...", 
+				"id"=>"keywords", 
+				"name"=>"keywords",
+				"value"=>$output['keywords'] 
+			));
 			/*
 			* Classname field
 			*/

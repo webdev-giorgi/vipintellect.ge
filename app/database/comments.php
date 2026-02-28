@@ -71,7 +71,7 @@ class comments
 		$fetch = array();
 		$itemPerPage = $args['itemPerPage'];
 		$from = (isset($_GET['pn']) && $_GET['pn']>0) ? (($_GET['pn']-1)*$itemPerPage) : 0;
-		if(!isset($args['file']) || $args['file']==""){
+		if(!isset($args['file']) || $args['file']=="0" || $args['file']==""){
 			$select = "SELECT (SELECT COUNT(`id`) FROM `comments` WHERE `status`!=:one) as counted, `id`, `date`, `firstname`, `organization`, `email`, `read` FROM `comments` WHERE `status`!=:one ORDER BY `date` DESC LIMIT ".$from.",".$itemPerPage;
 		}else{
 			$select = "SELECT (SELECT COUNT(`id`) FROM `comments` WHERE `status`!=:one) as counted, `id`, `date`, `firstname`, `organization`, `email`, `read` FROM `comments` WHERE `commentId`=".$args['file'];

@@ -322,6 +322,7 @@ class modules
 		$date_format = date("Y-m-d", $date);
 		$title = $args["title"];
 		$description = $args["pageText"];
+		$keywords = $args["keywords"];
 		$url = (!empty($args["link"])) ? $args["link"] : "";
 		$classname = (!empty($args["classname"])) ? $args["classname"] : "";
 		$type = $this->getTypeByIdx($args["idx"]);
@@ -341,6 +342,7 @@ class modules
 		$update = "UPDATE `usefull` SET 
 		`title`=:title, 
 		`description`=:description, 
+		`keywords`=:keywords, 
 		`url`=:url, 
 		`classname`=:classname 
 		WHERE `idx`=:idx AND `lang`=:lang";
@@ -348,6 +350,7 @@ class modules
 		$prepare->execute(array(
 			":title"=>$title,
 			":description"=>$description,
+			":keywords"=>$keywords,
 			":url"=>$url,
 			":classname"=>$classname,
 			":idx"=>$idx, 
@@ -542,6 +545,7 @@ class modules
 		$type = $args['moduleSlug'];
 		$title = $args['title'];
 		$pageText = $args['pageText'];
+		$keywords = $args['keywords'];
 		$link = (!empty($args["link"])) ? $args["link"] : "";
 		$classname = (!empty($args["classname"])) ? $args["classname"] : "";
 
@@ -552,22 +556,26 @@ class modules
 
 		$max = "SELECT MAX(`idx`) as maxidx FROM `usefull`";
 		$prepare2 = $this->conn->prepare($max);
-		$prepare2->execute(array(":one"=>1));
+		$prepare2->execute();
 		$fetch2 = $prepare2->fetch(PDO::FETCH_ASSOC);
 		$maxId = ($fetch2["maxidx"]) ? $fetch2["maxidx"] + 1 : 1;
 
 		foreach ($fetch as $val) {
-			$insert = "INSERT INTO `usefull` SET `idx`=:idx, `date`=:datex, `date_format`=:date_format, `type`=:type, `title`=:title, `description`=:description, `url`=:url, `classname`=:classname, `lang`=:lang";
+			$insert = "INSERT INTO `usefull` SET `idx`=:idx, `cid`=:cid, `date`=:datex, `date_format`=:date_format, `type`=:type, `title`=:title, `description`=:description, `keywords`=:keywords, `url`=:url, `classname`=:classname, `lang`=:lang, `visibility`=:visibility, `status`=:status";
 			$prepare3 = $this->conn->prepare($insert);
 			$prepare3->execute(array(
 				":idx"=>$maxId, 
+				":cid"=>0, 
 				":datex"=>$date, 
 				":date_format"=>$date_format, 
 				":type"=>$type, 
 				":title"=>$title, 
 				":description"=>$pageText, 
+				":keywords"=>$keywords, 
 				":url"=>$link,
 				":classname"=>$classname,
+				":visibility"=>0,
+				":status"=>0,
 				":lang"=>$val['title']
 			)); 
 

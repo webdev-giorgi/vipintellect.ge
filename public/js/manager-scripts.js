@@ -95,6 +95,7 @@ var formPageAdd = function(){
 	var redirect = $("#redirect").val();
 	var pageDescription = (tinymce.get('pageDescription') != null) ? tinymce.get('pageDescription').getContent() : '';
 	var pageText = (tinymce.get('pageText') != null) ? tinymce.get('pageText').getContent() : '';
+	var keywords = $("#keywords").val();
 	var random = $("#random").val();
 	var file_attach_type = $("#file_attach_type").val();
 
@@ -141,7 +142,7 @@ var formPageAdd = function(){
 		$.ajax({
 			method: "POST",
 			url: Config.ajax + ajaxFile,
-			data: { lang:lang, input_cid:input_cid, chooseNavType: chooseNavType, choosePageType: choosePageType, title: title, slug: slug, cssClass:cssClass, attachModule:attachModule, redirect:redirect, pageDescription: pageDescription, pageText: pageText, serialPhotos: serialPhotos, serialFiles:serialFiles }
+			data: { lang:lang, input_cid:input_cid, chooseNavType: chooseNavType, choosePageType: choosePageType, title: title, slug: slug, cssClass:cssClass, attachModule:attachModule, redirect:redirect, pageDescription: pageDescription, pageText: pageText, keywords:keywords, serialPhotos: serialPhotos, serialFiles:serialFiles }
 		}).done(function( msg ) {
 			var obj = $.parseJSON(msg);
 			if(obj.Error.Code==1){
@@ -174,6 +175,7 @@ var formPageEdit = function(idx, lang){
 	var redirect = $("#redirect").val();
 	var pageDescription = (tinymce.get('pageDescription') != null) ? tinymce.get('pageDescription').getContent() : '';
 	var pageText = (tinymce.get('pageText') != null) ? tinymce.get('pageText').getContent() : '';
+	var keywords = $("#keywords").val();
 	var random = $("#random").val();
 	var file_attach_type = $("#file_attach_type").val();
 
@@ -220,7 +222,7 @@ var formPageEdit = function(idx, lang){
 		$.ajax({
 			method: "POST",
 			url: Config.ajax + ajaxFile,
-			data: { idx:idx, lang: lang, chooseNavType: chooseNavType, choosePageType: choosePageType, title: title, slug: slug, cssClass:cssClass, attachModule:attachModule, redirect:redirect, pageDescription: pageDescription, pageText: pageText, serialPhotos:serialPhotos, serialFiles:serialFiles }
+			data: { idx:idx, lang: lang, chooseNavType: chooseNavType, choosePageType: choosePageType, title: title, slug: slug, cssClass:cssClass, attachModule:attachModule, redirect:redirect, pageDescription: pageDescription, pageText: pageText, keywords:keywords, serialPhotos:serialPhotos, serialFiles:serialFiles }
 		}).done(function( msg ) {
 			var obj = $.parseJSON(msg);
 			if(obj.Error.Code==1){
@@ -821,6 +823,7 @@ var formModuleEdit = function(idx, lang){
 	var file_attach_type = $("#file_attach_type").val();
 	var random = $("#random").val();
 	var pageText = (tinymce.get('pageText') !== null) ? tinymce.get('pageText').getContent() : "Hidden field";
+	var keywords = $("#keywords").val();
 	var link = (typeof $("#link").val() !== "undefined" && $("#link").val()!="") ? $("#link").val() : "empty";
 	var classname = (typeof $("#classname").val() !== "undefined" && $("#classname").val()!="") ? $("#classname").val() : "";
 
@@ -865,7 +868,7 @@ var formModuleEdit = function(idx, lang){
 		$.ajax({
 			method: "POST",
 			url: Config.ajax + ajaxFile,
-			data: { idx:idx, lang: lang, date: date, title: title, pageText: pageText, link:link, classname:classname, serialPhotos:serialPhotos, serialFiles:serialFiles }
+			data: { idx:idx, lang: lang, date: date, title: title, pageText: pageText, keywords:keywords, link:link, classname:classname, serialPhotos:serialPhotos, serialFiles:serialFiles }
 		}).done(function( msg ) {
 			var obj = $.parseJSON(msg);
 			if(obj.Error.Code==1){
@@ -914,6 +917,7 @@ var formModuleAdd = function(moduleSlug, lang){
 	var file_attach_type = $("#file_attach_type").val();
 	var random = $("#random").val();
 	var pageText = (tinymce.get('pageText') !== null) ? tinymce.get('pageText').getContent() : "Hidden field";
+	var keywords = $("#keywords").val();
 	var link = (typeof $("#link").val() !== "undefined" && $("#link").val()!="") ? $("#link").val() : "empty";
 	var classname = (typeof $("#classname").val() !== "undefined" && $("#classname").val()!="") ? $("#classname").val() : "";
 
@@ -955,7 +959,7 @@ var formModuleAdd = function(moduleSlug, lang){
 		$.ajax({
 			method: "POST",
 			url: Config.ajax + ajaxFile,
-			data: { moduleSlug: moduleSlug, lang:lang, date: date, title: title, pageText: pageText, link:link, classname:classname, serialPhotos:serialPhotos, serialFiles:serialFiles }
+			data: { moduleSlug: moduleSlug, lang:lang, date: date, title: title, pageText: pageText, keywords:keywords, link:link, classname:classname, serialPhotos:serialPhotos, serialFiles:serialFiles }
 		}).done(function( msg ) {
 			var obj = $.parseJSON(msg);
 			if(obj.Error.Code==1){

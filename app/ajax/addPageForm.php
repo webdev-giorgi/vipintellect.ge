@@ -28,7 +28,7 @@ class addPageForm
 
 		$call = functions\request::index("POST","call");
 		$lang = functions\request::index("POST","lang");
-		$random = functions\string::random(25);
+		$random = functions\strings::random(25);
 
 		$form = functions\makeForm::open(array(
 			"action"=>"?",
@@ -189,6 +189,20 @@ class addPageForm
 			"name"=>"pageText",
 			"placeholder"=>"ვრცელი აღწერა",
 			"value"=>""
+		));
+
+
+		$form .= functions\makeForm::label(array(
+			"id"=>"keywordsLabel", 
+			"for"=>"keywords", 
+			"name"=>"ქივორდები",
+			"require"=>""
+		));
+		$form .= functions\makeForm::inputText(array(
+			"placeholder"=>"Vip Intellect, IT, Trainings...", 
+			"id"=>"keywords", 
+			"name"=>"keywords",
+			"value"=>"" 
 		));
 
 		$form .= functions\makeForm::label(array(

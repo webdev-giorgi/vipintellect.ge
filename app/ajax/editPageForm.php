@@ -181,6 +181,21 @@ class editPageForm
 				"placeholder"=>"ვრცელი აღწერა",
 				"value"=>$output['text']
 			));
+
+
+			$form .= functions\makeForm::label(array(
+				"id"=>"keywordsLabel", 
+				"for"=>"keywords", 
+				"name"=>"ქივორდები",
+				"require"=>""
+			));
+			$form .= functions\makeForm::inputText(array(
+				"placeholder"=>"Vip Intellect, IT, Trainings...", 
+				"id"=>"keywords", 
+				"name"=>"keywords",
+				"value"=>$output['keywords'] 
+			));
+
 			$form .= functions\makeForm::label(array(
 				"id"=>"photoLabel",
 				"for"=>"photo",

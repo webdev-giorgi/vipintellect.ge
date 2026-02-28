@@ -10,6 +10,9 @@ class _gallery
 		require_once("app/functions/strip_output.php");
 		require_once("app/functions/getWebpUrl.php"); 
 		$getWebpUrl = new functions\getWebpUrl(); 
+
+		require_once("app/functions/webp.php"); 
+		$webp = new functions\webp(); 
 		
 		$l = new functions\l(); 
 		$sting = new functions\strings();
@@ -33,13 +36,15 @@ class _gallery
 				// 	Config::WEBSITE_,
 				// 	strip_output::index($pic[0]['path'])
 				// );
-				$bigimage = sprintf(
+				$imageUrl = sprintf(
                     "%s%s",
                     Config::WEBSITE_,
                     strip_output::index($pic[0]['path'])
                 );
 
-				$image = $getWebpUrl->index($bigimage, array(100,100));				
+				// $image = $getWebpUrl->index($bigimage, array(100,100));				
+				$bigimage = $webp->index($imageUrl);				
+				$image = $webp->index($imageUrl, 1);			
 			}else{
 				$image = "/public/filemanager/noimage.png";
 				$bigimage = "/public/filemanager/noimage.png";

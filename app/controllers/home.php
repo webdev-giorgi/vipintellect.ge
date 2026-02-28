@@ -121,6 +121,12 @@ class Home extends Controller
 			"num"=>Config::HOME_PAGE_GALLERY_NUM
 		));
 
+		$db_about = new Database("page", array(
+			"method"=>"selectById", 
+			"idx"=>3, 
+			"lang"=>$_SESSION['LANG'] 
+		));		
+
 		/* gallery module */
 		$gallery = $this->model('_gallery');
 		$gallery->data = $db_gallery->getter();
@@ -176,6 +182,7 @@ class Home extends Controller
 			"slogan"=>$db_slogan->getter(),
 			"howfindus"=>$db_howfindus->getter(),
 			"news"=>$news->index(),
+			"aboutText"=>$db_about->getter(),
 			"staff"=>$staff->index(),
 			"gallery"=>$gallery->index(),
 			"vacancies"=>$vacancies->index(),

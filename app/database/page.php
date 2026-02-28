@@ -211,6 +211,7 @@ class page
 		$redirect = $args["redirect"];
 		$description = $args["pageDescription"];
 		$textx = $args["pageText"];
+		$keywords = $args["keywords"];
 
 		$select = "SELECT `title` FROM `languages`";
 		$prepare = $this->conn->prepare($select);
@@ -248,6 +249,7 @@ class page
 			`title`=:title, 
 			`description`=:description, 
 			`text`=:textx, 
+			`keywords`=:keywords, 
 			`slug`=:slug, 
 			`usefull_type`=:usefull_type, 
 			`cssclass`=:cssclass, 
@@ -266,6 +268,7 @@ class page
 				":title"=>$title,
 				":description"=>$description,
 				":textx"=>$textx,
+				":keywords"=>$keywords,
 				":slug"=>$slug,
 				":usefull_type"=>$usefull_type,
 				":cssclass"=>$cssclass,
@@ -345,12 +348,14 @@ class page
 		$redirect = $args["redirect"];
 		$description = $args["pageDescription"];
 		$textx = $args["pageText"];
+		$keywords = $args["keywords"];
 
 		$update = "UPDATE `navigation` SET 
 		`type`=:type, 
 		`title`=:title, 
 		`description`=:description, 
 		`text`=:textx, 
+		`keywords`=:keywords, 
 		`slug`=:slug, 
 		`usefull_type`=:usefull_type,
 		`cssclass`=:cssclass,
@@ -361,6 +366,7 @@ class page
 			":title"=>$title,
 			":description"=>$description,
 			":textx"=>$textx,
+			":keywords"=>$keywords,
 			":slug"=>$slug,
 			":usefull_type"=>$usefull_type,
 			":cssclass"=>$cssclass,

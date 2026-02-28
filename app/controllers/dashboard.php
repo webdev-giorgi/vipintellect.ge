@@ -110,6 +110,7 @@ class dashboard extends Controller
 		require_once 'app/functions/request.php';
 		$pagination = new functions\pagination();
 		$file = (int)functions\request::index("GET","file");
+		
 		$itemPerPage = 10;
 		$comments = new Database('comments', array(
 			"method"=>"select",
@@ -117,6 +118,12 @@ class dashboard extends Controller
 			"itemPerPage"=>$itemPerPage
 		));
 		$getter = $comments->getter();
+
+
+		// echo "<pre>";
+		// print_r($getter);
+		// echo "</pre>";
+
 		// comments
 		$commentsView = $this->model('commentsView');
 		$commentsView->data = $getter;

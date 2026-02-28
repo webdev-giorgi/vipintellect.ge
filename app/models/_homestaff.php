@@ -10,6 +10,9 @@ class _homestaff
 		require_once("app/functions/getWebpUrl.php"); 
 		$getWebpUrl = new functions\getWebpUrl(); 
 
+		require_once("app/functions/webp.php"); 
+		$webp = new functions\webp(); 
+
 		$l = new functions\l();
 		
 		$out = "";
@@ -46,7 +49,8 @@ class _homestaff
 						strip_output::index($pic[0]['path'])
 					);
 
-					$image = $getWebpUrl->index($imageUrl, array(80, 80));
+					// $image = $getWebpUrl->index($imageUrl, array(80, 80));
+					$image = $webp->index($imageUrl, 1);
 					$out .= sprintf(
 						"<img src=\"%s\" alt=\"\" width=\"80\" height=\"80\" style=\"object-fit: contain\" />", 
 						$image

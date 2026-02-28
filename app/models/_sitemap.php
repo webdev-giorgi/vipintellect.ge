@@ -7,9 +7,10 @@ class _sitemap
 	{
 		require_once("app/functions/strings.php");
 		require_once("app/functions/strip_output.php"); 
-		$string = new functions\string(); 
+		$string = new functions\strings(); 
 
 		$out = "";
+		
 
 		/* NAVIGATION START */
 		if(count($this->data)){
